@@ -67,5 +67,8 @@ def index():
 def download(filename):
     return send_from_directory(DOWNLOAD_FOLDER, filename, as_attachment=True)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+import os
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))  # RenderはこのPORT環境変数を自動で渡す
+    app.run(host='0.0.0.0', port=port, debug=True)
